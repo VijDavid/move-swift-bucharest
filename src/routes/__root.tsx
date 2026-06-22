@@ -87,6 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#1a2c5b" },
+      { property: "og:title", content: "Mutări Express București – Mutări și Transport Mobilă" },
+      { name: "twitter:title", content: "Mutări Express București – Mutări și Transport Mobilă" },
+      { property: "og:description", content: "Mutări apartamente, case și birouri în București și Ilfov. Rapid, sigur și fără stres. Sună acum pentru ofertă gratuită." },
+      { name: "twitter:description", content: "Mutări apartamente, case și birouri în București și Ilfov. Rapid, sigur și fără stres. Sună acum pentru ofertă gratuită." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3bde3236-b758-4a36-a356-a8e448f0a142/id-preview-87595cf5--09a3105f-028d-453a-9232-0f46ff7750cc.lovable.app-1782131122228.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3bde3236-b758-4a36-a356-a8e448f0a142/id-preview-87595cf5--09a3105f-028d-453a-9232-0f46ff7750cc.lovable.app-1782131122228.png" },
     ],
     links: [
       {
