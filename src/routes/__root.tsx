@@ -11,6 +11,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { StickyCallButton } from "@/components/StickyCallButton";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +81,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Mutări Express București – Mutări și Transport Mobilă" },
+      { name: "description", content: "Mutări apartamente, case și birouri în București și Ilfov. Rapid, sigur și fără stres. Sună acum pentru ofertă gratuită." },
+      { property: "og:site_name", content: "Mutări Express București" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#1a2c5b" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MovingCompany",
+          name: "Mutări Express București",
+          telephone: "+40722123456",
+          email: "contact@mutariexpress.ro",
+          areaServed: ["București", "Ilfov"],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Bd. Unirii 45",
+            addressLocality: "București",
+            addressCountry: "RO",
+          },
+          openingHours: "Mo-Su 07:00-22:00",
+          priceRange: "$$",
+        }),
       },
     ],
   }),
@@ -118,8 +147,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <Header />
+        <main className="flex-1 pb-24 sm:pb-0">
+          <Outlet />
+        </main>
+        <Footer />
+        <StickyCallButton />
+        <Toaster richColors position="top-center" />
+      </div>
     </QueryClientProvider>
   );
 }
